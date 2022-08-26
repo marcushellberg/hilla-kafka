@@ -1,19 +1,6 @@
 import { Route } from '@vaadin/router';
-import './views/empty/empty-view';
+import './views/chat-view';
 
-export type ViewRoute = Route & {
-  title?: string;
-  icon?: string;
-  children?: ViewRoute[];
-};
-
-export const views: ViewRoute[] = [
-  // place routes below (more info https://hilla.dev/docs/routing)
-  {
-    path: '',
-    component: 'empty-view',
-    icon: 'la la-file',
-    title: 'Empty',
-  },
+export const routes: Route[] = [
+  { path: '', component: 'chat-view' }
 ];
-export const routes: ViewRoute[] = [...views];
