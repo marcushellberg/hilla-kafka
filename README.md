@@ -12,7 +12,7 @@ This is an example application showing how to produce and consume Kafka messages
 The application is configured to use a local Kafka broker. 
 You can use a managed solution like Confluent by updating `application.properties` appropriately. 
 
-1. Download Kafka from [the official Kafka website](https://kafka.apache.org/quickstart)
+1. Download Kafka from [the Kafka website](https://kafka.apache.org/quickstart)
 2. Extract the archive
 3. Start Zookeeper with `bin/zookeeper-server-start.sh config/zookeeper.properties`
 4. Start the Kafka broker with `bin/kafka-server-start.sh config/server.properties`
