@@ -4,11 +4,11 @@ import {html} from "lit";
 import {TextFieldChangeEvent} from "@vaadin/text-field";
 import '@vaadin/vaadin-messages';
 import '@vaadin/vaadin-text-field';
-import {ChatEndpoint} from "Frontend/generated/endpoints";
+import {MessageEndpoint} from "Frontend/generated/endpoints";
 import Message from "Frontend/generated/com/example/application/model/Message";
 
-@customElement('chat-view')
-export class ChatView extends View {
+@customElement('message-view')
+export class MessageView extends View {
   @state() messages: Message[] = [];
   @state() userName = '';
   @state() submitting = false;
@@ -42,7 +42,7 @@ export class ChatView extends View {
 
   async submit(e: CustomEvent) {
     this.submitting = true;
-    await ChatEndpoint.send({
+    await MessageEndpoint.send({
       text: e.detail.value,
       userName: this.userName,
     });
@@ -52,7 +52,7 @@ export class ChatView extends View {
   connectedCallback() {
     super.connectedCallback();
     this.classList.add('flex', 'flex-col', 'h-full', 'box-border');
-    ChatEndpoint.join().onNext(
+    MessageEndpoint.join().onNext(
       (message) => (this.messages = [...this.messages, message])
     );
   }

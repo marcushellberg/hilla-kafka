@@ -5,7 +5,6 @@ import java.time.ZonedDateTime;
 import com.example.application.model.Message;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 import dev.hilla.Endpoint;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -16,7 +15,7 @@ import reactor.core.publisher.Sinks.Many;
 
 @Endpoint
 @AnonymousAllowed
-public class ChatEndpoint {
+public class MessageEndpoint {
 
     @Value("${topic.name}")
     private String topicName;
@@ -25,7 +24,7 @@ public class ChatEndpoint {
     private final Flux<Message> chat;
     private final KafkaTemplate<String, Message> kafkaTemplate;
 
-    ChatEndpoint(KafkaTemplate<String, Message> kafkaTemplate) {
+    MessageEndpoint(KafkaTemplate<String, Message> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
         chatSink = Sinks.many().multicast().directBestEffort();
         chat = chatSink.asFlux();

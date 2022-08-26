@@ -1,6 +1,6 @@
 import { Route } from '@vaadin/router';
-import './views/chat-view';
+import './views/message-view';
 
 export const routes: Route[] = [
-  { path: '', component: 'chat-view' }
+  { path: '', component: 'message-view' }
 ];
